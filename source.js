@@ -1,7 +1,7 @@
 // digit to value map: first character is value of "0", etc.
 m = "6255456376";
 
-// "highscrore"
+// "highscore"
 h = 0;
 
 // instead of looping from 0 to 9999 and having to left-pad everything under 999

@@ -8,14 +8,13 @@ h = 0;
 // we can just loop from 10000 to 19999 (actually 10001 to 20000 due to the i++
 // optimization) and then ignore the first digit
 for (i = 10000; i++ < 20000;) {
-  // convert into string so we can do j[1];
-  // strings can be accessed like arrays, but numbers cannot
-  j = i + "";
-
   // regex to check validity of timestamp;
   // the first digit is garbage that is stripped away later, so we only check the
   // end of the string
-  if (/[012]\d[0-5]\d$/.test(j)) {
+  // also, we convert i into a string so we can do digit lookup with j[1];
+  // strings can be accessed like arrays, but numbers cannot.
+  // we create j in the same place we use it the first time so we can save 2 more bytes.
+  if (/[012]\d[0-5]\d$/.test(j = i + "")) {
     // calculate score by summing up each digit's (excluding the first) value
     // from the `m` map
     s = m[j[1]] + m[j[2]] + m[j[3]] + m[j[4]];
